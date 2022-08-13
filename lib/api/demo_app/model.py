@@ -38,9 +38,11 @@ class DemoApp:
         self.lastname = TEST_LASTNAME if lastname is None else lastname
         self.phone = TEST_PHONE if phone is None else phone
         self.url = URL
+        self.create_url = self.url + USERS_ROUTE
         self.token_url = self.url + TOKEN_ROUTE
         self.get_all_url = self.url + USERS_ROUTE
         self.get_url = self.url + USERNAME_ROUTE.format(username=self.username)
+        self.update_url = self.url + USERNAME_ROUTE.format(username=self.username)
         self.session = None
         self.token = None
 
@@ -59,16 +61,17 @@ class DemoApp:
             'phone': self.phone
         }
 
-    def update_payload(self, firstname=None, lastname=None, phone=None):
+    def update_new_details(self, firstname=None, lastname=None, phone=None):
         payload = dict()
-        if not firstname:
+
+        if firstname is not None:
             payload.update({"firstname": firstname})
 
-        if not lastname:
+        if lastname is not None:
             payload.update({"lastname": lastname})
 
-        if not phone:
+        if phone is not None:
             payload.update({"phone": phone})
 
-        self.update_payload = json.dumps(payload)
+        self.update_payload = payload
         return True

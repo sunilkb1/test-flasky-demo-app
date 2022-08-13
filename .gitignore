@@ -1,3 +1,6 @@
 # Ignore .idea files
 .idea/
 tests/Report.html
+/tests/.pytest_cache/
+/tests/api/Report.html
+/tests/api/assets/style.css

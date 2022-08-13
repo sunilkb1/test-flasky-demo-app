@@ -16,7 +16,7 @@ Requirements: None
 Any changes in endpoint api should be done here and not hardcoded in tests
 """
 
-URL = '127.0.0.1:8080'
+URL = 'http://127.0.0.1:8080'
 TOKEN_ROUTE = '/api/auth/token'
 USERS_ROUTE = '/api/users'
 USERNAME_ROUTE = '/api/users/{username}'

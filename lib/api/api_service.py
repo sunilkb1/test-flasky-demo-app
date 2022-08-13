@@ -26,7 +26,7 @@ class APIService:
         :param context: API/Endpoint object
         :return: resp data in json format
         """
-        response = requests.post(context.base_url, json=context.create_payload)
+        response = requests.post(context.create_url, json=context.create_payload)
         return response
 
     def login(self, context, username=None, password=None):
@@ -79,7 +79,7 @@ class APIService:
         data = context.update_payload
         if update_payload is not None:
             data = json.dumps(update_payload)
-        response = context.session.post(context.update_url, json=data)
+        response = context.session.put(context.update_url, data=data)
         return response
 
     def delete(self):

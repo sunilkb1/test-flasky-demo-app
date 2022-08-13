@@ -3,9 +3,10 @@ Logging decorator which can be used with tests to indicate the running of the te
 """
 
 import logging
+import functools
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.DEBUG)
-formatter = logging.Formatter('%(asctime)s [%(levelname)8s] %(message)s (%(filename)s:%(lineno)s)')
+formatter = logging.Formatter('%(asctime)s [%(levelname)3s] %(message)s (%(filename)s:%(lineno)s)')
 
 stream_handler = logging.StreamHandler()
 stream_handler.setLevel(logging.DEBUG)
@@ -20,11 +21,13 @@ def log(func):
     :param func:
     :return:
     """
+
+    @functools.wraps(func)
     def wrapper(*args, **kwargs):
         try:
-            logger.info(f"\n****************** Running Test {func.__name__} ******************")
+            logger.info(f"****** Running Test {func.__name__} ******")
             ret_val = func(*args, **kwargs)
-            logger.info(f"\n****************** Ending Test {func.__name__} ******************")
+            logger.info(f"****** Completed Test {func.__name__}  ******")
             return ret_val
         except Exception as ex:
             logger.exception(f"Exception raised in {func.__name__}. exception: {str(ex)}")
