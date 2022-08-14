@@ -4,3 +4,8 @@ tests/Report.html
 /tests/.pytest_cache/
 /tests/api/Report.html
 /tests/api/assets/style.css
+/venv/
+/tests/ui/geckodriver*
+/tests/ui/*screenshot*
+/tests/ui/*.html
+/tests/ui/*.xml
