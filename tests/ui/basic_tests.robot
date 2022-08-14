@@ -1,29 +1,62 @@
+[Documentation]   Test case to validate demo app. This suite contains two positive tests:
+...    1. Register through web portal
+...    2. Review my own user information from the main view
+
 *** Settings ***
 Library     SeleniumLibrary
-Test Setup  Open Application    http://127.0.0.1:8080/
+Test Setup  Open Application    ${demoapp}
 Test Teardown    Close Application
+
+*** Variables ***
+${demoapp}              http://127.0.0.1:8080/
+${loginPageUrl}         login
+${userPageUrl}          user
+${registerPageUrl}      register
+${username}             test
+${password}             test
+${firstname}            testFN
+${lastname}             testLN
+${phone}                +358-123-123-123
+${tableHeader1}         key
+${tableHeader2}         value
+${loginLink}            Log In
+${loginButton}          Log In
+${registerLink}         Register
+${registerButton}       Register
+${loginPageBanner}      Log In
+${registerPageBanner}   Register
+${userPageBanner}       User Information
+
+
 
 
 *** Test Cases ***
 Registration Test
+    [Documentation]
+    ...     Open registration link, fill the registration and submit the details.
+    ...     On successful submission the page is redirected to login page
     [Tags]  Smoke
-    Click and Verify Banner    Link     Register    Register
-    Verify URL Contains  register
-    Fill Registration Details   test    test    testFN  testLN  +999999
-    Click and Verify Banner    Button   Register      Log In
-    Verify URL Contains  login
+    Click and Verify Banner    Link     ${registerLink}    ${registerPageBanner}
+    Verify URL Contains  ${registerPageUrl}
+    Fill Registration Details   ${username}    ${password}    ${firstname}  ${lastname}  ${phone}
+    Click and Verify Banner    Button   ${registerButton}      ${loginPageBanner}
+    Verify URL Contains  ${loginPageUrl}
 
 Verify Details
+    [Documentation]
+    ...     Open login page, fill the credentials.
+    ...     Verify the user info, if it matches with the registration data
     [Tags]  Smoke
-    Click and Verify Banner    Link     Log In    Log In
-    Enter Credentials   test    test
-    Click and Verify Banner    Button   Log In      User Information
-    Element Text Should Be    //table[@id='content']//tr/td[@id='username']  test
-    Element Text Should Be    //table[@id='content']//tr/td[@id='firstname']      testFN
-    Element Text Should Be    //table[@id='content']//tr/td[@id='lastname']      testLN
-    Element Text Should Be    //table[@id='content']//tr/td[@id='phone']  +999999
-    table header should contain    //table[@id='content']  key
-    table header should contain    //table[@id='content']  value
+    Click and Verify Banner    Link     ${loginLink}    ${loginPageBanner}
+    Enter Credentials   ${username}    ${password}
+    Click and Verify Banner    Button   ${loginButton}      ${userPageBanner}
+    Element Text Should Be    //table[@id='content']//tr/td[@id='username']  ${username}
+    Element Text Should Be    //table[@id='content']//tr/td[@id='firstname']     ${firstname}
+    Element Text Should Be    //table[@id='content']//tr/td[@id='lastname']      ${lastname}
+    Element Text Should Be    //table[@id='content']//tr/td[@id='phone']  ${phone}
+    table header should contain    //table[@id='content']  ${tableHeader1}
+    table header should contain    //table[@id='content']  ${tableHeader2}
+    Verify URL Contains  ${userPageUrl}
 
 
 *** Keywords ***
@@ -62,6 +95,7 @@ Open Application
     [Arguments]    ${url}
     open browser    ${url}
     maximize browser window
+    # Slowing down selenium for test purpose. To be revmoved in regular/regression runs.
     Set Selenium Speed  0.1
     Go To And Verify Header   ${url}/logout    index page
 
