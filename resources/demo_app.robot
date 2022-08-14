@@ -12,8 +12,9 @@ ${password}             ${VALID_TEST_PASSWORD}
 ${firstname}            ${TEST_FIRSTNAME}
 ${lastname}             ${TEST_LASTNAME}
 ${phone}                ${TEST_PHONE}
-${browser}              firefox          # Options supported are chrome, firefox, headlessfirefox, headlesschrome
-                                         # Please read README on setting up webdriver for these browsers
+#Options supported for browsers are chrome, firefox, headlessfirefox, headlesschrome
+# Please read README on setting up webdriver for these browsers
+${browser}              firefox
 ${loginPageUrl}         login
 ${userPageUrl}          user
 ${logoutPageUrl}        logout
@@ -41,7 +42,7 @@ Open Application
     [Documentation]   Setup the brower
     [Arguments]    ${url}
     Setup Webdriver
-    open browser    ${url}      ${browser}
+    open browser    ${url}      ${browser}      service_log_path=${{os.path.devnull}}
     maximize browser window
     # Slowing down selenium for test purpose. To be revmoved in regular/regression runs.
     Set Selenium Speed  0.1

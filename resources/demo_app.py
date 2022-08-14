@@ -6,10 +6,6 @@ These are not expected to change frequently.
 This will be shared by both API and UI/Robotframework tests
 Requirements: None
 """
-# pylint: disable=too-many-instance-attributes
-# Instances are required for this use-case
-# pylint: disable=too-few-public-methods
-# Sufficient for this use case
 
 
 """

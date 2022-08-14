@@ -6,8 +6,6 @@ usage:
 pytest test_basic.py
 Demo:
 """
-# pylint: disable=line-too-long
-# pylint: disable=wrong-import-position
 
 import sys
 import logging

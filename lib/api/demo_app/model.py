@@ -7,10 +7,6 @@ Also constants are read and populated into the demo_app object.
 This will be used in conjunction with api_services to run the rest api calls
 Requirements: None
 """
-# pylint: disable=too-many-instance-attributes
-# Instances are required for this use-case
-# pylint: disable=too-few-public-methods
-# Sufficient for this use case
 
 import uuid
 import time

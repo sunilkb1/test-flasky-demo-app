@@ -5,12 +5,6 @@ This class handles the API services i.e. CRUD operations and other common functi
 This is not tied to specific API and is re-usable for other API end-points
 Requirements: None
 """
-# pylint: disable=too-many-instance-attributes
-# Instances are required for this use-case
-# pylint: disable=too-few-public-methods
-# Sufficient for this use case
-# pylint: disable=no-else-return
-# Valid for this use case
 import json
 import requests
 
