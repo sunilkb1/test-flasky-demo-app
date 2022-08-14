@@ -8,7 +8,9 @@ The file structure of test-flasky-demo-app encourage code reuse and make it quic
 These are the top-level directories:
 - `lib` - where all the libraries that support the tests are maintained.
 - `tests` - where all the tests of the flasky app go.  This has both UI (robot/selenium) and RestAPI (pytest/request) based tests
-- `bin` - TBD (which contains the webdriver required to run selenium.) 
+- `bin` - which contains the webdriver required to run selenium. The webdriver depends on platform and browser version. 
+The bin folder contains three sub-folders - *mac*, *win*, *linux* and these paths are added into PATH variable when UI tests are run.
+Make sure to place the webdriver as per your platform/broswer version in any of these folders or into default python path. 
 - `resources`  - test data used by both API and UI tests.
 
 ## Lib

@@ -35,12 +35,18 @@ $ robot basic_tests.robot
 ```
 All the requirement mentioned in requirements.txt must be installed *(robotframework, robotframework-seleniumlibrary)*
 
-The UI tests are run using default firefox browser. 
-*geckodriver* for the particular platfrom on which the test is run should be downloaded and placed in the default python path
+### WebDrivers
+The UI tests are run using default firefox browser. However, this can be changed in the demo_app.robot resource file.
+UI tests can be run in headless mode without the GUI.
 
-*geckodriver* can be downloaded from https://github.com/mozilla/geckodriver/releases
+A webdriver is required to run UI test and the webdriver binary to be used depends on platform and browser version. 
+The *bin* folder contains three sub-folders - *mac*, *win*, *linux* and these paths are added into PATH variable when UI tests are run.
+Make sure to place the webdriver as per your platform/browser version in any of these folders or into default python path.
+
+*geckodriver* for firefox can be downloaded from https://github.com/mozilla/geckodriver/releases
+*chromedriver* for Google Chrome can be downloaded from https://chromedriver.chromium.org/downloads
 
 More details here -  https://www.selenium.dev/selenium/docs/api/py/#drivers
 
-
-**For both UI and API tests, *report.html* is generated in the respective folder which contains the test run result report.**
+## Test Reports
+For both UI and API tests, *report.html* is generated in the respective folder which contains the test run result report.

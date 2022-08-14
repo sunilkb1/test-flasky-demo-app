@@ -14,7 +14,7 @@ Registration Test
     [Documentation]
     ...     Open registration link, fill the registration and submit the details.
     ...     On successful submission the page is redirected to login page
-    [Tags]  Smoke
+    [Tags]  SmokeTest
     Click and Verify Banner    Link     ${registerLink}    ${registerPageBanner}
     Verify URL Contains  ${registerPageUrl}
     Fill Registration Details
@@ -26,9 +26,9 @@ Verify Details
     [Documentation]
     ...     Open login page, fill the credentials.
     ...     Verify the user info, if it matches with the registration data
-    [Tags]  Smoke
+    [Tags]  SmokeTest
     Click and Verify Banner    Link     ${loginLink}    ${loginPageBanner}
-    Enter Credentials   ${username}    ${password}
+    Enter Credentials
     Click and Verify Banner    Button   ${loginButton}      ${userPageBanner}
     Verify User Info Table Values
     Verify User Info Table Header

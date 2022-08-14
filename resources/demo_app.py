@@ -19,8 +19,13 @@ Any changes in endpoint api should be done here and not hardcoded in tests
 import time
 import uuid
 
-### Variables used by both pytest/API and robot/UI tests
+# Variables used by both pytest/API and robot/UI tests
 URL = 'http://127.0.0.1:8080'
+
+# We use the epoch time to generate a unique uuid which we are using as username.
+# Both API and UI does not have the capability to delete a user.
+# Hence, we are generating unique username which can be used to run tests multiple times,
+# without encountering - User Already Exists error.
 UNIQUE_USERNAME = uuid.uuid1(clock_seq=int(time.time())).hex
 
 # Dummy password to be used for all the new users created in this test.

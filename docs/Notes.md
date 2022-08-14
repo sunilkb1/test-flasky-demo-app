@@ -41,4 +41,4 @@ Traceback (most recent call last):
 ImportError: cannot import name 'Container' from 'collections' (/usr/lib/python3.10/collections/__init__.py)
 
 ```
-* Above error was fixed after removing the version sring from requirement file and thus enabling the docker to pull all the latest libraries.
+* Above error was fixed after removing the version string from requirement file and thus enabling the docker to pull all the latest libraries.

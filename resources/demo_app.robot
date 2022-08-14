@@ -2,6 +2,7 @@
 
 *** Settings ***
 Library     SeleniumLibrary
+Library     OperatingSystem
 Variables   ./demo_app.py
 
 *** Variables ***
@@ -11,6 +12,8 @@ ${password}             ${VALID_TEST_PASSWORD}
 ${firstname}            ${TEST_FIRSTNAME}
 ${lastname}             ${TEST_LASTNAME}
 ${phone}                ${TEST_PHONE}
+${browser}              firefox          # Options supported are chrome, firefox, headlessfirefox, headlesschrome
+                                         # Please read README on setting up webdriver for these browsers
 ${loginPageUrl}         login
 ${userPageUrl}          user
 ${logoutPageUrl}        logout
@@ -35,20 +38,24 @@ ${infoTable}            //table[@id='content']
 
 *** Keywords ***
 Open Application
+    [Documentation]   Setup the brower
     [Arguments]    ${url}
-    open browser    ${url}
+    Setup Webdriver
+    open browser    ${url}      ${browser}
     maximize browser window
     # Slowing down selenium for test purpose. To be revmoved in regular/regression runs.
     Set Selenium Speed  0.1
-    Go To And Verify Header   ${url}/${logoutPageUrl}    index page
+    Go To And Verify Banner   ${url}/${logoutPageUrl}    index page
 
 
 Close Application
+    [Documentation]   Log out and close the browsers
     [Arguments]    ${url}
-    Go To And Verify Header   ${url}/${logoutPageUrl}    index page
+    Go To And Verify Banner   ${url}/${logoutPageUrl}    index page
     close browser
 
 Fill Registration Details
+    [Documentation]   new user details to be filled
     input text    id:username   ${username}
     input password    id:password   ${password}
     input text    id:firstname      ${firstname}
@@ -56,6 +63,7 @@ Fill Registration Details
     input text    id:phone      ${phone}
 
 Verify User Info Table Values
+    [Documentation]   Verify the new user details from table
     Element Text Should Be    ${usernameFromTable}  ${username}
     Element Text Should Be    ${firstnameFromTable}     ${firstname}
     Element Text Should Be    ${lastnameFromTable}      ${lastname}
@@ -65,7 +73,8 @@ Verify User Info Table Header
     table header should contain    ${infoTable}  ${tableHeader1}
     table header should contain    ${infoTable}  ${tableHeader2}
 
-Go To And Verify Header
+Go To And Verify Banner
+    [Documentation]   Go to specified url and verify the header/banner on the page
     [Arguments]    ${url}    ${header}
     go to       ${url}
     wait until element is visible    xpath://h1[text()='${header}']
@@ -77,12 +86,18 @@ Verify URL Contains
     should contain    ${newurl}     ${url_word}
 
 Click and Verify Banner
+    [Documentation]   Click a link or a button and verify the header/banner on the page
     [Arguments]    ${type}      ${link}     ${header}
     run keyword if  '${type}' == 'Link'   click link    ${link}
     run keyword if  '${type}' == 'Button'   click button    xpath://input[@value='${link}']
     page should contain element    xpath://h1[text()='${header}']
 
 Enter Credentials
-    [Arguments]    ${username}  ${password}
     input text    id:username   ${username}
     input password    id:password   ${password}
+
+Setup Webdriver
+    [Documentation]   Add the bin folder as path variable for selenium driver
+    Append To Environment Variable    PATH    ../../bin/win/
+    Append To Environment Variable    PATH    ../../bin/linux/
+    Append To Environment Variable    PATH    ../../bin/mac/
