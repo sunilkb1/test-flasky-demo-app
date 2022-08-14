@@ -12,7 +12,6 @@ Requirements: None
 # pylint: disable=too-few-public-methods
 # Sufficient for this use case
 
-import json
 import uuid
 import time
 from resources.demo_app import URL, USERNAME_ROUTE, \

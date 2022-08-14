@@ -15,6 +15,7 @@ Technical assessment - Signant Health
 * Delete of user not supported.
 * Input field validation not available.
 * Banner (like registration successful) are not implemented causing ambiguity.
+* *Last Name* is labelled as *Family Name* in Registration Form.
 
 
 ### App Installation & Run
