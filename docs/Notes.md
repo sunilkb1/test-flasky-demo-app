@@ -1,47 +1,43 @@
 # test-flasky-demo-app
 Technical assessment - Signant Health
 
-## How to reach the author?
-*  email at: sunil.vvce@gmail.com
+## Observations
+
+### API
+* A token generated with user1 will allow modifying the details of user2 using PUT api.
+* Patch/Delete not supported for end-end CRUD operation testing.
+* Change of *password* not supported via PUT.
+* GET /api/users using any token will get all the users. 
+* An admin login should be available using whose token only, we should be able to GET all the /api/users. 
 
 
-## How can I install the requirements.txt file?
+### UI
+* Delete of user not supported.
+* Input field validation not available.
+* Banner (like registration successful) are not implemented causing ambiguity.
+
+
+### App Installation & Run
+* Docker image built from the given docker file does not work due to mismatch in versions mentioned in requirement.txt
+
 ```sh
-$ cd test-flasky-demo-app
-$ pip install -r requirements.txt
+docker logs 94be5d00716d3250e00c98ed615f2c7481a8c1345704e4e015b678991a3ae261
+Traceback (most recent call last):
+  File "/usr/bin/flask", line 5, in <module>
+    from flask.cli import main
+  File "/usr/lib/python3.10/site-packages/flask/__init__.py", line 17, in <module>
+    from werkzeug.exceptions import abort
+  File "/usr/lib/python3.10/site-packages/werkzeug/__init__.py", line 151, in <module>
+    __import__('werkzeug.exceptions')
+  File "/usr/lib/python3.10/site-packages/werkzeug/exceptions.py", line 71, in <module>
+    from werkzeug.wrappers import Response
+  File "/usr/lib/python3.10/site-packages/werkzeug/wrappers.py", line 27, in <module>
+    from werkzeug.http import HTTP_STATUS_CODES, \
+  File "/usr/lib/python3.10/site-packages/werkzeug/http.py", line 1148, in <module>
+    from werkzeug.datastructures import Accept, HeaderSet, ETags, Authorization, \
+  File "/usr/lib/python3.10/site-packages/werkzeug/datastructures.py", line 16, in <module>
+    from collections import Container, Iterable, MutableSet
+ImportError: cannot import name 'Container' from 'collections' (/usr/lib/python3.10/collections/__init__.py)
+
 ```
-
-## File Structure Overview
-The file structure of test-flasky-demo-app encourage code reuse and make it quick to find and understand the code.
-
-## Top Level
-These are the top-level directories:
-- `lib` - where all the libraries that support all the tests are maintained.
-- `tests` - where all the proper tests of the flasky app go.
-- `bin` - which contains the webdriver required to run selenium. 
-- `resources`  - test data.
-
-## Lib
-The `lib` (library) is  the building blocks used to make the tests.
- 
-Any type of activity in a code that is likely to be used in another script/test should be refactored to the library section of the repo.
- 
-The library is itself organized to you can easily find building blocks based on the type of activity you need to accomplish.
- 
-### API
-The *lib/api* directory is structured for RestAPI to interacts with the flasky app.
-
-The script here implement the RestAPI that is publicly supported by app and available to use.
-
-### UI
-The *lib/ui* directory contains the code for UI implementation (Using robortframework-selenium library)
- 
-
-## Tests
-
-These contain the actual tests to be run.
-### UI
-UI tests are implemented in robort framework and used the selenium library.
-
-### API
-API tests are writern on pytest test framework and are implemented using requests module.
+* Above error was fixed after removing the version sring from requirement file and thus enabling the docker to pull all the latest libraries.

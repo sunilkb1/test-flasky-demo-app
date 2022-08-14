@@ -9,3 +9,4 @@ tests/Report.html
 /tests/ui/*screenshot*
 /tests/ui/*.html
 /tests/ui/*.xml
+/tests/ui/assets/style.css

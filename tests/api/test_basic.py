@@ -32,6 +32,7 @@ def create_user_login(request):
     api_user = getattr(request.module, "api_user")
     api_service.create(api_user)
     api_service.login(api_user)
+    return api_user
 
 
 # Create test user by passing Fname, Lname and phone details
@@ -80,7 +81,8 @@ api_user = api_user3
 
 @log
 def test_get_user(create_user_login):
-    get_user_response = api_service.get(api_user3, username=api_user3.username)
+    api_user3 = create_user_login
+    get_user_response = api_service.get(api_user, username=api_user3.username)
     logger.debug(f"get user response is {get_user_response.json()}")
     assert int(get_user_response.status_code) == 200
     assert get_user_response.json()['status'] == 'SUCCESS'
@@ -98,7 +100,8 @@ api_user = api_user4
 
 @log
 def test_get_all_users(create_user_login):
-    get_all_user_response = api_service.get_all(api_user4)
+    api_user4 = create_user_login
+    get_all_user_response = api_service.get_all(api_user)
     logger.debug(f"get user response is {get_all_user_response.json()}")
     assert int(get_all_user_response.status_code) == 200
     assert get_all_user_response.json()['status'] == 'SUCCESS'
@@ -123,6 +126,7 @@ api_user = api_user5
 
 @log
 def test_update_user(create_user_login):
+    api_user5 = create_user_login
     update_firstname = 'UpdatedUserFiveFN'
     update_lastname = 'UpdateUserFiveLN'
     update_phone = '+91-555-555-555'

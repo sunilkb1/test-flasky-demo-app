@@ -11,37 +11,34 @@ $ cd test-flasky-demo-app
 $ pip install -r requirements.txt
 ```
 
-## File Structure Overview
-The file structure of test-flasky-demo-app encourage code reuse and make it quick to find and understand the code.
+## How to run API tests
+```sh
+$ cd test-flasky-demo-app
+$ cd tests/api/
+$ pytest
+or
+$ python3 -m pytest
+```
+All the requirement mentioned in requirements.txt must be installed *(pytest, pytest-html, requests)*
 
-## Top Level
-These are the top-level directories:
-- `lib` - where all the libraries that support all the tests are maintained.
-- `tests` - where all the proper tests of the flasky app go.
-- `bin` - which contains the webdriver required to run selenium. 
-- `resources`  - test data.
+### To run specific testcase
+```sh
+pytest -k <testcase name>
+```
+*Example: pytest -k test_update_user*
 
-## Lib
-The `lib` (library) is  the building blocks used to make the tests.
- 
-Any type of activity in a code that is likely to be used in another script/test should be refactored to the library section of the repo.
- 
-The library is itself organized to you can easily find building blocks based on the type of activity you need to accomplish.
- 
-### API
-The *lib/api* directory is structured for RestAPI to interacts with the flasky app.
+## How to run UI tests
+```sh
+$ cd test-flasky-demo-app
+$ cd tests/ui/
+$ robot basic_tests.robot  
+```
+All the requirement mentioned in requirements.txt must be installed *(robotframework, robotframework-seleniumlibrary)*
+The UI tests are run using default firefox browser. *geckodriver* for the particular platfrom on which the test is run should be downloaded and placed in the default python path
 
-The script here implement the RestAPI that is publicly supported by app and available to use.
+*geckodriver* can be downloaded from https://github.com/mozilla/geckodriver/releases
 
-### UI
-The *lib/ui* directory contains the code for UI implementation (Using robortframework-selenium library)
- 
+More details here -  https://www.selenium.dev/selenium/docs/api/py/#drivers
 
-## Tests
 
-These contain the actual tests to be run.
-### UI
-UI tests are implemented in robort framework and used the selenium library.
-
-### API
-API tests are writern on pytest test framework and are implemented using requests module.
+**In both UI and API tests, a *report.html* is generated in the respective folder which contains the test run result report.**

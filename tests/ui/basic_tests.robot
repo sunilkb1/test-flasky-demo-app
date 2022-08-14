@@ -5,12 +5,13 @@
 *** Settings ***
 Library     SeleniumLibrary
 Test Setup  Open Application    ${demoapp}
-Test Teardown    Close Application
+Test Teardown    Close Application  ${demoapp}
 
 *** Variables ***
 ${demoapp}              http://127.0.0.1:8080/
 ${loginPageUrl}         login
 ${userPageUrl}          user
+${logoutPageUrl}        logout
 ${registerPageUrl}      register
 ${username}             test
 ${password}             test
@@ -97,8 +98,10 @@ Open Application
     maximize browser window
     # Slowing down selenium for test purpose. To be revmoved in regular/regression runs.
     Set Selenium Speed  0.1
-    Go To And Verify Header   ${url}/logout    index page
+    Go To And Verify Header   ${url}/${logoutPageUrl}    index page
 
 
 Close Application
+    [Arguments]    ${url}
+    Go To And Verify Header   ${url}/${logoutPageUrl}    index page
     close browser
