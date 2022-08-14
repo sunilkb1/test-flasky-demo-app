@@ -10,7 +10,8 @@ Demo:
 import sys
 import logging
 import pytest
-sys.path.append('../../')
+import os
+sys.path.append(os.path.abspath(os.path.join(__file__,  "..", "..", "..")))
 
 from lib.log import log
 from lib.log import logger

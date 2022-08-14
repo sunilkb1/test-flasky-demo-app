@@ -14,6 +14,7 @@ Any changes in endpoint api should be done here and not hardcoded in tests
 
 import time
 import uuid
+import os
 
 # Variables used by both pytest/API and robot/UI tests
 URL = 'http://127.0.0.1:8080'
@@ -32,6 +33,7 @@ INVALID_TEST_PASSWORD = 'INVALID_PASSWORD'
 TEST_FIRSTNAME='TestFirstName'
 TEST_LASTNAME='TestLastName'
 TEST_PHONE='+358123456789'
+TEST_ROOT_PATH = os.path.abspath(os.path.join(__file__,  "..", ".."))
 
 
 # API Endpoints

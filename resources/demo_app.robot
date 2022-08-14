@@ -3,7 +3,7 @@
 *** Settings ***
 Library     SeleniumLibrary
 Library     OperatingSystem
-Variables   ./demo_app.py
+Variables   demo_app.py
 
 *** Variables ***
 ${demoapp}              ${URL}
@@ -12,6 +12,7 @@ ${password}             ${VALID_TEST_PASSWORD}
 ${firstname}            ${TEST_FIRSTNAME}
 ${lastname}             ${TEST_LASTNAME}
 ${phone}                ${TEST_PHONE}
+${root_path}            ${TEST_ROOT_PATH}
 #Options supported for browsers are chrome, firefox, headlessfirefox, headlesschrome
 # Please read README on setting up webdriver for these browsers
 ${browser}              firefox
@@ -99,6 +100,7 @@ Enter Credentials
 
 Setup Webdriver
     [Documentation]   Add the bin folder as path variable for selenium driver
-    Append To Environment Variable    PATH    ../../bin/win/
-    Append To Environment Variable    PATH    ../../bin/linux/
-    Append To Environment Variable    PATH    ../../bin/mac/
+    log to console    Test root path is ${root_path}
+    Append To Environment Variable    PATH    ${root_path}/bin/win/
+    Append To Environment Variable    PATH    ${root_path}/bin/linux/
+    Append To Environment Variable    PATH    ${root_path}/bin/mac/

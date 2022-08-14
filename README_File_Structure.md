@@ -11,7 +11,7 @@ Make sure to place the webdriver as per your platform/broswer version in any of 
 - `resources`  - test data used by both API and UI tests. Changes in url, api endpoints etc. are to be done here.
 
 ## lib and resources
-The `lib` (library) is  the building blocks used to make the tests. Resources contain the test data.
+The `lib` (library) is  the building blocks used to make the tests. `resources` contain the test data.
  
 Any type of activity in a code that is likely to be used in another script/test should be refactored to the library section of the repo.
  
