@@ -1,5 +1,5 @@
 # test-flasky-demo-app
-Technical assessment - Signant Health
+Test framework for a demo app.
 
 ## How to reach the author?
 *  email at: sunil.vvce@gmail.com
@@ -44,6 +44,7 @@ The *bin* folder contains three sub-folders - *mac*, *win*, *linux* and these pa
 Make sure to place the webdriver as per your platform/browser version in any of these folders or into default python path.
 
 *geckodriver* for firefox can be downloaded from https://github.com/mozilla/geckodriver/releases
+
 *chromedriver* for Google Chrome can be downloaded from https://chromedriver.chromium.org/downloads
 
 More details here -  https://www.selenium.dev/selenium/docs/api/py/#drivers
