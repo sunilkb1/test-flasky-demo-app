@@ -11,6 +11,11 @@ $ cd test-flasky-demo-app
 $ pip install -r requirements.txt
 ```
 
+## Demo Videos
+* Demo video: https://drive.google.com/file/d/14pGRXWwh6sPK2HxCEOfEOoZdBEt1eQJ4/view?usp=sharing
+* Code Walk-through vide: https://drive.google.com/file/d/14pJ6LVBpr6ObXOKuFZccmqRW-diHkiJH/view?usp=sharing
+
+
 ## How to run API tests
 ```sh
 $ cd test-flasky-demo-app
