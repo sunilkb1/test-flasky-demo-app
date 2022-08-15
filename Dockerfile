@@ -36,3 +36,9 @@ ENV FLASK_APP demo_app
 RUN sed -i 's/flask/python3 -m flask/g' run.sh
 
 CMD ["sh", "run.sh"]
+
+## Commands to run
+# docker build -t test_demo_app .
+# docker run -it -d --name test_flasky test_demo_app
+# docker exec -it test_flasky robot -v browser:headlessfirefox /test-flasky-demo-app/tests/ui/basic_tests.robot
+# docker exec -it test_flasky pytest /test-flasky-demo-app/tests/api/test_basic.py
