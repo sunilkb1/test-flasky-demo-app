@@ -10,3 +10,7 @@ tests/Report.html
 /tests/ui/*.html
 /tests/ui/*.xml
 /tests/ui/assets/style.css
+/tests/log.html
+/tests/output.xml
+/assets/style.css
+/tests/assets/style.css
