@@ -4,13 +4,6 @@ Test framework for a demo app.
 ## How to reach the author?
 *  email at: sunil.vvce@gmail.com
 
-
-## How can I install the requirements.txt file?
-```sh
-$ cd test-flasky-demo-app
-$ pip install -r requirements.txt
-```
-
 ## Demo Videos
 * Demo video: https://drive.google.com/file/d/14pGRXWwh6sPK2HxCEOfEOoZdBEt1eQJ4/view?usp=sharing
 * Code Walk-through vide: https://drive.google.com/file/d/14pJ6LVBpr6ObXOKuFZccmqRW-diHkiJH/view?usp=sharing
@@ -25,6 +18,11 @@ $ docker exec -it test_flasky robot -v browser:headlessfirefox /test-flasky-demo
 $ docker exec -it test_flasky pytest /test-flasky-demo-app/tests/api/test_basic.py
 ```
 
+## How can I install the requirements.txt file?
+```sh
+$ cd test-flasky-demo-app
+$ pip install -r requirements.txt
+```
 
 ## How to run API tests
 ```sh
