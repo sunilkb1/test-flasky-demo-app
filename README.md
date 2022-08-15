@@ -15,6 +15,16 @@ $ pip install -r requirements.txt
 * Demo video: https://drive.google.com/file/d/14pGRXWwh6sPK2HxCEOfEOoZdBEt1eQJ4/view?usp=sharing
 * Code Walk-through vide: https://drive.google.com/file/d/14pJ6LVBpr6ObXOKuFZccmqRW-diHkiJH/view?usp=sharing
 
+## How to run from Dockerfile
+```sh
+$ cd test-flasky-demo-app
+$ ls Dockerfile
+$ docker build -t test_demo_app .
+$ docker run -it -d --name test_flasky test_demo_app
+$ docker exec -it test_flasky robot -v browser:headlessfirefox /test-flasky-demo-app/tests/ui/basic_tests.robot
+$ docker exec -it test_flasky pytest /test-flasky-demo-app/tests/api/test_basic.py
+```
+
 
 ## How to run API tests
 ```sh
@@ -56,3 +66,5 @@ More details here -  https://www.selenium.dev/selenium/docs/api/py/#drivers
 
 ## Test Reports
 For both UI and API tests, *report.html* is generated in the respective folder which contains the test run result report.
+
+###### Note: Scripts are tested on Mac and linux environment. If any platform specific issues are seen on other platforms, please inform the author.
