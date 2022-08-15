@@ -41,19 +41,17 @@ ${infoTable}            //table[@id='content']
 *** Keywords ***
 Open Application
     [Documentation]   Setup the brower
-    [Arguments]    ${url}
     Setup Webdriver
-    open browser    ${url}      ${browser}      service_log_path=${{os.path.devnull}}
+    open browser    ${demoapp}      ${browser}      service_log_path=${{os.path.devnull}}
     maximize browser window
     # Slowing down selenium for test purpose. To be revmoved in regular/regression runs.
     Set Selenium Speed  0.1
-    Go To And Verify Banner   ${url}/${logoutPageUrl}    index page
+    Go To And Verify Banner   ${demoapp}/${logoutPageUrl}    index page
 
 
 Close Application
     [Documentation]   Log out and close the browsers
-    [Arguments]    ${url}
-    Go To And Verify Banner   ${url}/${logoutPageUrl}    index page
+    Go To And Verify Banner   ${demoapp}/${logoutPageUrl}    index page
     close browser
 
 Fill Registration Details

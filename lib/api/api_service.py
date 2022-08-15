@@ -66,11 +66,11 @@ class APIService:
         """
         Updates the existing record
         :param context: API/Endpoint object
-        :param update_payload: payload which contains the new data to be updated
+        :param update_payload (dict): dictionary payload which contains the new data to be updated
                                 If none, updated_payload from context will be used
         :return: response
         """
-        data = context.update_payload
+        data = json.dumps(context.update_payload)
         if update_payload is not None:
             data = json.dumps(update_payload)
         response = context.session.put(context.update_url, data=data)

@@ -5,8 +5,8 @@
 *** Settings ***
 Library     SeleniumLibrary
 Resource    ../../resources/demo_app.robot
-Test Setup  Open Application    ${demoapp}
-Test Teardown    Close Application  ${demoapp}
+Test Setup  Open Application
+Test Teardown    Close Application
 
 
 *** Test Cases ***

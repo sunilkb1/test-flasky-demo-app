@@ -4,7 +4,8 @@ description:
 Validate demo-app api - GET /api/auth/token	, GET/POST /api/users, GET/PUT - /api/users/{username}
 usage:
 pytest test_basic.py
-Demo:
+or
+python3 -m pytest test_basic.py
 """
 
 import sys
