@@ -28,9 +28,13 @@ $ pip install -r requirements.txt
 ```sh
 $ cd test-flasky-demo-app
 $ cd tests/api/
-$ pytest
+$ pytest 
 or
 $ python3 -m pytest
+or
+$ python3 -m pytest test_basic.py
+or
+$ pytest test_basic.py
 ```
 All the requirement mentioned in requirements.txt must be installed *(pytest, pytest-html, requests)*
 
